@@ -70,16 +70,23 @@ This notebook performs the full pipeline:
 
 ## Results
 
-The following results are from an example run on the NO₂ (GT) pollutant, using a lag depth of 24 (selected based on cross-validated performance):
+The table below shows example test results from forecasting NO₂ (GT) levels using different models and lag depths.  
+A lag depth of 24 yielded the best performance. Larger depths (e.g., 48) slightly increased test error, likely due to overfitting.
 
-| Metric | Test Set |
-|--------|----------|
-| MSE    | 137.25   |
-| MAE    | 12.99    |
-| RMSE   | 11.72    |
+| Lag Depth | Model                         | MSE    | MAE    | RMSE   |
+|-----------|-------------------------------|--------|--------|--------|
+| 1         | Courselib LR (GD 0.001)       | 149.70 | 13.39  | 12.24  |
+| 1         | Scikit-learn Ridge (α = 0.1)  | 149.71 | 13.39  | 12.24  |
+| 2         | Courselib LR (GD 0.001)       | 137.37 | 13.01  | 11.72  |
+| 2         | Scikit-learn Ridge (α = 0.1)  | 137.37 | 13.01  | 11.72  |
+| 24        | Courselib LR (GD 0.001)       | 137.27 | 12.99  | 11.72  |
+| 24        | Scikit-learn Ridge (α = 1.0)  | 137.42 | 13.01  | 11.72  |
+| 24        | **Scikit-learn Ridge (α = 0.1)** | **137.25** | **12.99** | **11.72** |
+| 48        | Courselib LR (GD 0.001)       | 140.03 | 12.98  | 11.83  |
+| 48        | Scikit-learn Ridge (α = 0.1)  | 140.07 | 12.98  | 11.84  |
 
-Linear autoregressive models, particularly ridge regression, performed the best for short-term air quality forecasting.  
-The best-performing model—scikit-learn Ridge Regression with α = 0.1, outperformed both the course-provided gradient descent implementation and Ridge Regression with α = 1.0.
+Overall, linear autoregressive models, especially ridge regression, performed well for short-term air quality prediction.  
+The best-performing model (scikit-learn Ridge with α = 0.1) slightly outperformed both the course-provided gradient descent model and Ridge with α = 1.0.
 
 *Example plots (predicted vs actual, error by hour, coefficient weights, etc.) can be found in [`notebooks/main.ipynb`](notebooks/main.ipynb).  
 The notebook also contains additional analysis and visual reasoning used to guide model selection.*
