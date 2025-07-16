@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ## Data
 
-This project uses the UCI Air Quality Dataset (NO₂, CO, etc.), originally from the [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/Air+Quality).
+This project uses the UCI Air Quality Dataset, originally from the [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/Air+Quality).
 
 The dataset (`AirQualityUCI.csv`) is already included under `data/raw/`, so no manual download is necessary.
 
